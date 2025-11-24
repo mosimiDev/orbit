@@ -66,10 +66,7 @@ Widget _buildTrailingWidgets(BuildContext context) {
             const PopupMenuDivider(),
             const PopupMenuItem<String>(
                 value: 'suggest_time', child: Text('Suggest New Time')),
-            const PopupMenuItem<String>(
-              value: 'ai_assistant',
-              child: Text('AI Assistant'),
-            ),
+            
           ],
         ),
       ],

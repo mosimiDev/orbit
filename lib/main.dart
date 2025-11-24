@@ -210,11 +210,22 @@ import 'package:orbit/screens/onboarding_screen.dart';
 import 'package:provider/provider.dart';
 import 'providers/project_provider.dart';
 import 'screens/project_list_screen.dart';
+import 'screens/login_screen.dart';
+import 'screens/register_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'screens/auth_wrapper.dart';
 import 'screens/ai_assistant_screen.dart';
 
 
 
-void main() {
+Future<void> main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
 runApp(
 ChangeNotifierProvider(
 create: (_) => ProjectProvider(),
@@ -238,10 +249,13 @@ useMaterial3: true,
 ),
 debugShowCheckedModeBanner: false,
  initialRoute: '/',
-routes: {
-'/': (context) => const OnboardingScreen(),
-'/projects': (context) => const ProjectListScreen(),
-'/ai-assistant': (context) => const AIAssistantScreen(),}
-);
+ routes: {
+ '/': (context) => const OnboardingScreen(),
+ '/auth': (context) => const AuthWrapper(),
+ '/projects': (context) => const ProjectListScreen(),
+ '/ai-assistant': (context) => const AIAssistantScreen(),
+ '/login': (context) => const LoginScreen(),
+ '/register': (context) => const RegisterScreen(),
+ });
 }
 }

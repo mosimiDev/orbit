@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'project_list_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -45,14 +45,21 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   void _finishOnboarding() {
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (_) => const ProjectListScreen()),
-    );
+    Navigator.pushReplacementNamed(context, '/login');
   }
 
   @override
   Widget build(BuildContext context) {
+    // Check if the user is already logged in
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      // If logged in, navigate to the projects screen
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Navigator.pushReplacementNamed(context, '/projects');
+      });
+      return const Scaffold(body: Center(child: CircularProgressIndicator())); // Show a loading indicator while redirecting
+    }
+
     return Scaffold(
       body: SafeArea(
         child: Column(

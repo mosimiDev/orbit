@@ -31,10 +31,7 @@ children: [
 Text('${project.tasks.length}'),
 IconButton(icon: const Icon(Icons.edit), onPressed: onEdit),
 IconButton(icon: const Icon(Icons.delete), onPressed: onDelete),
-IconButton(
-  icon: const Icon(Icons.smart_toy_outlined),
-  onPressed: () => Navigator.pushNamed(context, '/ai-assistant'),
-),
+
 
 ],
 ),

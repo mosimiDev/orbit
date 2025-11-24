@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/project_provider.dart';
 import '../services/ai_service.dart';
+import '../models/task.dart';
+import 'package:uuid/uuid.dart';
 
 class AIAssistantScreen extends StatefulWidget {
   const AIAssistantScreen({super.key});
@@ -73,10 +75,20 @@ class _AIAssistantScreenState extends State<AIAssistantScreen> {
                       trailing: IconButton(
                         icon: const Icon(Icons.add),
                         onPressed: () {
+                          // Create a Task object from the AI-generated data
+                          final newTask = Task(
+                            id: const Uuid().v4(),
+                            title: task['title'] ?? 'Untitled Task',
+                            priority: Priority.values.firstWhere(
+                              (e) => e.name.toLowerCase() == (task['priority'] as String? ?? 'medium').toLowerCase(),
+                              orElse: () => Priority.medium,
+                            ),
+                            // You might want to handle category as well
+                          );
+
                           projectProvider.addTask(
                             projectProvider.projects.first.id,
-                            task['title']
-                            
+                            newTask,
                           );
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(content: Text('Task added to project!')),
