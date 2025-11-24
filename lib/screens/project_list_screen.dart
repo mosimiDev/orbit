@@ -20,10 +20,9 @@ class ProjectListScreen extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () async {
-              // Sign out the user. The AuthWrapper will handle navigation.
+              
               await FirebaseAuth.instance.signOut();
-              // No need to navigate manually, but if you want to ensure the user
-              // is taken to the root of the navigation stack for auth:
+              
               Navigator.of(context).pushNamedAndRemoveUntil('/auth', (route) => false);
             },
           ),

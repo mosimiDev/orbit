@@ -44,13 +44,13 @@ Future<void> toggleTask(String projectId, Task task) async {
     final project = _projects.firstWhere((p) => p.id == projectId);
     final taskIndex = project.tasks.indexWhere((t) => t.id == task.id);
     if (taskIndex != -1) {
-      // Toggle the completed status
+      
       project.tasks[taskIndex].completed = !project.tasks[taskIndex].completed;
       notifyListeners();
       await _save();
     }
   } catch (e) {
-    // Handle cases where the project or task is not found, if necessary
+   
     print('Error toggling task: $e');
   }
 }
@@ -87,7 +87,7 @@ Future<void> doneTask(String projectId, Task task) async {
 final proj = _projects.firstWhere((p) => p.id == projectId);
 final i = proj.tasks.indexWhere((t) => t.id == task.id);
 if (i != -1) {
-  // replace the task with the updated task (e.g. with updated completion state)
+  
   proj.tasks[i] = task;
   await _save();
   notifyListeners();
@@ -101,7 +101,7 @@ await _save();
 notifyListeners();
 }
 
-// Persist projects to local storage
+
 Future<void> _save() async {
 await _storage.saveProjects(_projects);
 }

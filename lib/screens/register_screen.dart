@@ -23,7 +23,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
-      // Navigate to project list screen on successful registration
+      
       Navigator.pushReplacementNamed(context, '/projects');
     } on FirebaseAuthException catch (e) {
       setState(() {

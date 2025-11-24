@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 class AIService {
   static Future<List<Map<String, dynamic>>> generateTasks(String prompt) async {
-    // Replace this with your real endpoint or OpenAI key
+    
     final url = Uri.parse('https://ai-gateway.vercel.sh/v1/chat/completions');
     final response = await http.post(
       url,
@@ -12,8 +12,7 @@ class AIService {
     );
 
     if (response.statusCode == 200) {
-      // Expected mock response format
-      // [{"title":"Design logo","priority":"High","category":"Work"}]
+      
       return List<Map<String, dynamic>>.from(jsonDecode(response.body));
     } else {
       throw Exception('AI generation failed');
@@ -22,7 +21,7 @@ class AIService {
 
   static Future<String> suggestNewTime(String taskTitle) async {
     await Future.delayed(const Duration(seconds: 1));
-    // Simulate AI rescheduling suggestion
+    
     return 'Suggested new time for "$taskTitle" is tomorrow at 10 AM';
   }
 }

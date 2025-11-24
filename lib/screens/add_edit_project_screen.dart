@@ -49,7 +49,7 @@ class _AddEditProjectScreenState extends State<AddEditProjectScreen> {
                 controller: _descController,
                 decoration:
                     const InputDecoration(labelText: 'Description'),
-                // maxLines: 3,
+                
               ),
               const SizedBox(height: 14),
               ElevatedButton.icon(
@@ -68,7 +68,7 @@ class _AddEditProjectScreenState extends State<AddEditProjectScreen> {
                   } else {
                     await provider.updateProject(newProject);
                   }
-                  // ignore: use_build_context_synchronously
+                 
                   Navigator.pop(context);
                 },
               )

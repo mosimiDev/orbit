@@ -75,7 +75,7 @@ class _AIAssistantScreenState extends State<AIAssistantScreen> {
                       trailing: IconButton(
                         icon: const Icon(Icons.add),
                         onPressed: () {
-                          // Create a Task object from the AI-generated data
+                          
                           final newTask = Task(
                             id: const Uuid().v4(),
                             title: task['title'] ?? 'Untitled Task',
@@ -83,7 +83,7 @@ class _AIAssistantScreenState extends State<AIAssistantScreen> {
                               (e) => e.name.toLowerCase() == (task['priority'] as String? ?? 'medium').toLowerCase(),
                               orElse: () => Priority.medium,
                             ),
-                            // You might want to handle category as well
+                            
                           );
 
                           projectProvider.addTask(

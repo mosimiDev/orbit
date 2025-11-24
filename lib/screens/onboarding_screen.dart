@@ -50,14 +50,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // Check if the user is already logged in
+   
     final user = FirebaseAuth.instance.currentUser;
     if (user != null) {
-      // If logged in, navigate to the projects screen
+      
       WidgetsBinding.instance.addPostFrameCallback((_) {
         Navigator.pushReplacementNamed(context, '/projects');
       });
-      return const Scaffold(body: Center(child: CircularProgressIndicator())); // Show a loading indicator while redirecting
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
 
     return Scaffold(
@@ -106,7 +106,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            // Dots indicator
+            
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(
@@ -126,7 +126,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
             ),
             const SizedBox(height: 30),
-            // Next / Get Started button
+          
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: SizedBox(

@@ -22,7 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
-      // Navigate to project list screen on successful login
+      
       Navigator.pushReplacementNamed(context, '/projects');
     } on FirebaseAuthException catch (e) {
       setState(() {

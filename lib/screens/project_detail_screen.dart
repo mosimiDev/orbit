@@ -136,7 +136,7 @@ class ProjectDetailScreen extends StatelessWidget {
                       dueDate: dueDate,
                     ),
                   );
-                  // ignore: use_build_context_synchronously
+                  
                   Navigator.pop(context);
                 },
                 child: const Text('Add')),
